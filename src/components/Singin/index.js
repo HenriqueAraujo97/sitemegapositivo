@@ -7,7 +7,7 @@ const Users = () =>{
     const[password, setPassword] = useState('')
 
 const login = () =>{
-    axios.post("http://localhost:3001/login",{
+    axios.post("http://localhost3001/login",{
    username: username,
    password: password, 
 }).then((response) => {

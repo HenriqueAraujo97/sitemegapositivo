@@ -7,42 +7,21 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const con = mysql.createConnection({
+const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
   database: 'megapositivobd'
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    con.query(`SELECT * FROM os_accounts`, function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
+  app.get("/" , (req, res) =>{
+    const sqlInsert = "INSERT INTO os_accounts (Id, Username, Password) VALUES (5, 'henrique','henrique');"
+    db.query(sqlInsert, (err, result)  =>{
+      res.send("hello henrique");
     });
   });
 
-  app.post('/login') , (req, res) =>{
-      const username = req.body.username;
-      const password = req.body.password;
-
-      db.query(
-          "SELECT * FROM os_accounts WHERE Username = ? AND Password = ? ",
-            [username, password],
-            (err,result) => {
-
-                if(err){
-                res.send({err: err})
-                }
-                    if(result){
-                        res.send(result)
-                    }else{
-                        res.send({message: "Utilizador ou password errada"});
-                    }
-                }     
-      )
-  };
-
-app.listen(3001, () => {
-  console.log("running server");
-});
+ 
+  app.listen(3001, () => {
+    console.log("running server");
+  });

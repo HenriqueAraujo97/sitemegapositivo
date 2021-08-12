@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FaBars} from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib';
-import {animateScroll as scroll} from 'react-scroll'
+import {animateScroll as scroll} from 'react-scroll' 
 import { Nav,NavbarContainer,NavLogo,MobileIcon,NavMenu,NavItem,NavLinks } from './NavbarElements';
 
 const Navbar = ({toggle}) => {
@@ -31,7 +31,14 @@ const Navbar = ({toggle}) => {
       
             <Nav scrollNav = {scrollNav}>
                 <NavbarContainer>
-                    <NavLogo to ='/' onClick = {toggleHome}>Megapositivo</NavLogo>
+                    <NavLogo to ='/' onClick = {toggleHome}> 
+                    <img src = {require('../../images/logotipo1.jpg')} 
+                    alt = 'logo' />
+                       
+                    </NavLogo>
+                    
+
+                    
                     <MobileIcon onClick = {toggle}>
                         <FaBars />
                     </MobileIcon>
